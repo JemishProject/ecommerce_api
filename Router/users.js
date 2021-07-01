@@ -9,7 +9,10 @@ router.post('/register', async (req, res) => {
     // Check if this user already exisits
     let user = await User.findOne({ email: req.body.email });
     if (user) {
-        return res.status(400).json('That user already exisits!');
+        return res.status(400).json({
+            status: false,
+            message: 'That user already exisits!'
+        });
     } else {
         // Insert the new user if they do not exist yet
         user = new User({
@@ -33,13 +36,19 @@ router.post('/login', async (req, res) => {
     const userValid = await User.findOne({ email })
 
     if(!userValid) {
-        return res.send({ error: 'User Not Exist.'})
+        return res.send({ 
+            status: false,
+            message: 'User Not Exist.'
+        })
     }
 
     const passwordValid = await bcrypt.compare(password, userValid.password)
 
     if(!passwordValid) {
-        return res.send({ error: 'Invalid Password.'})
+        return res.send({ 
+            status: false,
+            message: 'Invalid Password.'
+        })
     }
     
     const payload = { email: email }
