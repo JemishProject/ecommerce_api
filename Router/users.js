@@ -64,4 +64,11 @@ router.get('/loggedin', validate, async (req, res) => {
     })
 })
 
+router.get('/', async (req, res) => {
+    return res.status(200).send({
+        status: true,
+        message: "Hello",
+    })
+})
+
 module.exports = router;
