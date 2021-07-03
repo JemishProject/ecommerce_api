@@ -4,22 +4,33 @@ const Schema = mongoose.Schema
 const UserSchema = new Schema({
     mobile: {
         type: Number,
-        required: true,
         minlength: 5,
         maxlength: 50
     },
     email: {
         type: String,
-        required: true,
         minlength: 3,
         maxlength: 50
     },
     password: {
         type: String,
-        required: true,
         minlength: 5,
         maxlength: 1024
-    }
+    },
+    firstname: {
+        type: String,
+        minlength: 3
+    },
+    lastname: {
+        type: String,
+        minlength: 3
+    },
+    image: {
+        type: String,
+    },
+    address:{
+        type: String,
+    },
 },
 {
   timestamps: true,

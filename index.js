@@ -14,6 +14,8 @@ mongoose.connect(process.env.MONGODB_URL, {
     useUnifiedTopology: true
 }).then(() => console.log('Database connected...!'))
 
+app.use('/images', express.static('./public/images'));
+
 app.use('/', router)
 
 const port = process.env.PORT || 8080
